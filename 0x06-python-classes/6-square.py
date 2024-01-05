@@ -8,7 +8,10 @@ class Square:
     def __init__(self, size=0, position=(0, 0)):
         """constructor with private variable"""
         self.__size = size
-        self.__position = position
+        if self.is_valid_tuple(position):
+            self.__position = position
+        else:
+            raise TypeError("position must be a tuple of 2 positive integers")
 
     @property
     def size(self):
@@ -28,17 +31,24 @@ class Square:
         elif value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
+    
+    def is_valid_tuple(self, value):
+        """a function to check if a value is a valid tuple"""
+        if not isinstance(value, tuple):
+            return False
+        if len(value) != 2:
+            return False
+        if not all(isinstance(elem, int) and elem >= 0 for elem in value):
+            return False
+        return True
 
     @position.setter
     def position(self, value):
         """corresponding setter for position property"""
-        if not isinstance(value, tuple):
+        if self.is_valid_tuple(value):
+            self.__position = value
+        else:
             raise TypeError("position must be a tuple of 2 positive integers")
-        if len(value) != 2:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if not all(isinstance(elem, int) and elem > 0 for elem in value):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = value
 
     def area(self):
         """function to calculate and return area of square"""
