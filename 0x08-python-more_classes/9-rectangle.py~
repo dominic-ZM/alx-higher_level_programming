@@ -77,9 +77,17 @@ class Rectangle:
         """Returns a string representation"""
         if self.__width == 0 or self.__height == 0:
             return ""
-        top_side = f"{self.print_symbol * self.__width}"
-        sides = f"{self.print_symbol * (self.__width - 1)}{self.print_symbol}\n"
-        rectangle = top_side + "\n" + sides * (self.__height - 2) + top_side
+        if isinstance(self.print_symbol, str):
+            top_side = self.print_symbol * self.__width
+        else:
+            top_side = str(self.print_symbol) * self.__width
+        if self.__height == 1:
+            rectangle = top_side
+        elif self.__height == 2:
+            rectangle = f"{top_side}\n{top_side}"
+        else:
+            side = f"{top_side}\n"
+            rectangle = f"{top_side}\n{side * self.__height - 2)}{top_side}"
         return rectangle
 
     def __repr__(self):
