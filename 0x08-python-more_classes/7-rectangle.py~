@@ -68,7 +68,7 @@ class Rectangle:
         else:
             top_side = str(self.print_symbol) * self.__width
         side = f"{top_side}\n"
-        rectangle = f"{top_side}{side * (self.__height - 2)}{top_side}"
+        rectangle = f"{top_side}\n{side * (self.__height - 2)}{top_side}"
         return rectangle
 
     def __repr__(self):
