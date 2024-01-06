@@ -58,5 +58,7 @@ class Rectangle:
         sides = "#" * (self.__width - 1) + "#\n"
         rectangle = top_side + "\n" + sides * (self.__height - 2) + top_side
         return rectangle
+
     def __repr__(self):
+        """Returns a string representation that can create a new instance"""
         return f"Rectangle({self.__width}, {self.__height})"

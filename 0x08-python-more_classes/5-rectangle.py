@@ -12,6 +12,10 @@ class Rectangle:
         self.height = height
         self.width = width
 
+    def __del__(self):
+        """Called when object is destroyed"""
+        print("Bye rectangle...")
+
     @property
     def height(self):
         """Returns the value of height"""
@@ -58,5 +62,7 @@ class Rectangle:
         sides = "#" * (self.__width - 1) + "#\n"
         rectangle = top_side + "\n" + sides * (self.__height - 2) + top_side
         return rectangle
+
     def __repr__(self):
+        """Returns a string representation that can create a new instance"""
         return f"Rectangle({self.__width}, {self.__height})"
