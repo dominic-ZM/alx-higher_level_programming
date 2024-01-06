@@ -64,8 +64,7 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return ""
         top_side = f"{self.print_symbol * self.__width}"
-        sides = f"{self.print_symbol * (self.__width - 1)}\
-        {self.print_symbol}\n"
+        sides = f"{self.print_symbol*(self.__width - 1)}{self.print_symbol}\n"
         rectangle = top_side + "\n" + sides * (self.__height - 2) + top_side
         return rectangle
 
