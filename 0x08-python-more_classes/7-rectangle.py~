@@ -6,7 +6,7 @@
 class Rectangle:
     """Definition of rectangle class"""
     number_of_instances = 0
-    print_symbol = "#"
+    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
         """called when creating an instance"""
@@ -63,10 +63,12 @@ class Rectangle:
         """Returns a string representation"""
         if self.__width == 0 or self.__height == 0:
             return ""
-        top_side = f"{self.print_symbol * self.__width}"
-        sides = f"{self.print_symbol * (self.__width - 1)}\
-        {self.print_symbol}\n"
-        rectangle = top_side + "\n" + sides * (self.__height - 2) + top_side
+        if isinstance(self.print_symbol, str):
+            top_side = self.print_symbol * self.__width
+        else:
+            top_side = str(self.print_symbol) * self.__width
+        side = f"{top_side}\n"
+        rectangle = f"{top_side}{side * (self.__height - 2)}{top_side}"
         return rectangle
 
     def __repr__(self):
